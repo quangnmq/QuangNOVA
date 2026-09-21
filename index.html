@@ -22,10 +22,24 @@
     </div>
 
     <header class="site-header">
+        <div class="header-start">
+            <details class="site-menu">
+                <summary aria-label="Mở menu điều hướng" title="Menu">
+                    <i class="bi bi-list" aria-hidden="true"></i>
+                </summary>
+                <nav class="menu-dropdown" aria-label="Menu điều hướng">
+                    <a href="#new">Hàng mới</a>
+                    <a href="#categories">Danh mục</a>
+                    <a href="#products">Sản phẩm nổi bật</a>
+                    <a href="#collection">Bộ sưu tập</a>
+                    <a href="#newsletter">Đăng ký nhận tin</a>
+                </nav>
+            </details>
+        </div>
         <a class="brand" href="#" aria-label="NOVA - Trang chủ">NŌVA</a>
 
         <nav class="main-nav" aria-label="Điều hướng chính">
-            <a href="#new">Hàng cũ</a>
+            <a href="#new">Hàng mới</a>
             <a href="#products">Vòng tay vàng</a>
             <a href="#products">Vòng tay bạc</a>
             <a href="#collection">Bộ sưu tập</a>
@@ -72,7 +86,7 @@
                 <a class="category-card category-card-large" href="#products">
                     <!-- <img src="https://images.unsplash.com/photo-1744472457504-f99a96ecbd3e?auto=format&fit=crop&w=1200&q=85"
                         alt="Vòng tay vàng thanh lịch trên cổ tay"> -->
-                    <img src="quang-product.jpg"
+                    <img src="./images/quang-product.jpg"
                         alt="Vòng tay vàng thanh lịch trên cổ tay">
                     <span class="category-label">Vàng <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
                 </a>
@@ -217,7 +231,7 @@
             </div>
         </section>
 
-        <section class="newsletter" aria-labelledby="newsletter-title">
+        <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
             <p class="eyebrow">NOVA Notes</p>
             <h2 id="newsletter-title">Một chút lấp lánh, gửi riêng cho bạn.</h2>
             <p>Đăng ký để nhận tin về thiết kế mới và ưu đãi sớm nhất.</p>
@@ -262,6 +276,21 @@
             <div><a href="#privacy">Quyền riêng tư</a><a href="#terms">Điều khoản</a></div>
         </div>
     </footer>
+    <script>
+        document.querySelectorAll('.menu-dropdown a').forEach((link) => {
+            link.addEventListener('click', () => {
+                link.closest('.site-menu').removeAttribute('open');
+            });
+        });
+
+        const header = document.querySelector('.site-header');
+        const updateStickyHeader = () => {
+            header.classList.toggle('is-scrolled', window.scrollY > 8);
+        };
+
+        updateStickyHeader();
+        window.addEventListener('scroll', updateStickyHeader, { passive: true });
+    </script>
 </body>
 
 </html>
