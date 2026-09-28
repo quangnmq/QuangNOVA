@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiểm tra sản phẩm trong giỏ hàng Kết An Yên trước khi thanh toán.">
+    <title>Giỏ hàng | Kết An Yên</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cart-page">
+    <header class="site-header cart-site-header">
+        <a class="brand" href="index.html" aria-label="Kết An Yên - Trang chủ"><img src="./images/logo.png" alt="Kết An Yên"></a>
+        <a class="cart-back-link" href="index.html#products"><i class="bi bi-arrow-left" aria-hidden="true"></i> Tiếp tục mua sắm</a>
+        <a href="cart.html" aria-label="Giỏ hàng" title="Giỏ hàng" class="cart-link">
+            <i class="bi bi-bag" aria-hidden="true"></i><span data-cart-count>0</span>
+        </a>
+    </header>
+
+    <main class="cart-main">
+        <div class="cart-title-row">
+            <div>
+                <p class="eyebrow dark">Your selection</p>
+                <h1>Giỏ hàng</h1>
+            </div>
+            <a class="text-link" href="index.html#products">Tiếp tục mua sắm <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        </div>
+
+        <section class="cart-empty" data-cart-empty hidden>
+            <i class="bi bi-bag" aria-hidden="true"></i>
+            <h2>Giỏ hàng đang trống</h2>
+            <p>Chọn món trang sức bạn yêu thích để bắt đầu.</p>
+            <a class="button button-dark" href="index.html#products">Khám phá sản phẩm</a>
+        </section>
+
+        <div class="cart-layout" data-cart-layout hidden>
+            <section class="cart-items" aria-label="Sản phẩm trong giỏ hàng">
+                <div class="cart-list-heading"><span>Sản phẩm</span><span>Tổng cộng</span></div>
+                <div data-cart-items></div>
+            </section>
+            <aside class="cart-summary">
+                <h2>Tóm tắt đơn hàng</h2>
+                <div class="summary-row"><span>Tạm tính</span><strong data-cart-subtotal>0đ</strong></div>
+                <div class="summary-row"><span>Phí vận chuyển</span><span>Tính khi xác nhận đơn</span></div>
+                <div class="summary-row summary-total"><span>Tổng tạm tính</span><strong data-cart-total>0đ</strong></div>
+                <p>Phí vận chuyển sẽ được xác nhận theo địa chỉ giao hàng.</p>
+                <a class="button button-dark checkout-button" href="#checkout">Tiến hành thanh toán <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </aside>
+        </div>
+
+        <section class="checkout-note" id="checkout" data-cart-checkout-note hidden>
+            <h2>Sẵn sàng cho bước thanh toán?</h2>
+            <p>Kiểm tra số lượng và tổng tiền ở trên, sau đó liên hệ shop để xác nhận địa chỉ, phí vận chuyển và phương thức thanh toán.</p>
+            <a class="button button-dark" href="https://zalo.me/your-phone-number" target="_blank" rel="noopener noreferrer">Xác nhận đơn qua Zalo <i class="bi bi-chat-dots" aria-hidden="true"></i></a>
+        </section>
+    </main>
+
+    <footer class="cart-footer"><a href="index.html">Kết An Yên</a><span>Trang giỏ hàng lưu sản phẩm trên thiết bị của bạn.</span></footer>
+    <script src="cart.js"></script>
+</body>
+</html>

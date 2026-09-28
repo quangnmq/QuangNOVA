@@ -36,7 +36,7 @@
                 </nav>
             </details>
         </div>
-        <a class="brand" href="#" aria-label="Kết An Yên - Trang chủ">Kết An Yên</a>
+        <a class="brand" href="#" aria-label="Ket An Yen - Home"><img src="./images/logo.png" alt="Ket An Yen"></a>
 
         <nav class="main-nav" aria-label="Điều hướng chính">
             <a href="#new">Hàng mới</a>
@@ -49,8 +49,8 @@
             <a href="#search" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="bi bi-search" aria-hidden="true"></i></a>
             <a href="#account" aria-label="Tài khoản" title="Tài khoản"><i class="bi bi-person"
                     aria-hidden="true"></i></a>
-            <a href="#cart" aria-label="Giỏ hàng có 2 sản phẩm" title="Giỏ hàng" class="cart-link">
-                <i class="bi bi-bag" aria-hidden="true"></i><span>2</span>
+            <a href="cart.html" aria-label="Giỏ hàng" title="Giỏ hàng" class="cart-link">
+                <i class="bi bi-bag" aria-hidden="true"></i><span data-cart-count>0</span>
             </a>
         </div>
     </header>
@@ -132,6 +132,7 @@
                             <p>Đá tự nhiên / Handmade</p>
                         </div>
                         <span class="price">690.000đ</span>
+                        <button class="add-to-cart" type="button" data-add-to-cart="moonlight">Thêm vào giỏ <i class="bi bi-bag-plus" aria-hidden="true"></i></button>
                     </div>
                 </article>
 
@@ -150,6 +151,7 @@
                             <p>Bạc 925 / 2 kích thước</p>
                         </div>
                         <span class="price">1.190.000đ</span>
+                        <button class="add-to-cart" type="button" data-add-to-cart="silver-line">Thêm vào giỏ <i class="bi bi-bag-plus" aria-hidden="true"></i></button>
                     </div>
                 </article>
 
@@ -169,6 +171,7 @@
                             <p>Charm men đen / Mạ vàng 18K</p>
                         </div>
                         <span class="price">1.490.000đ</span>
+                        <button class="add-to-cart" type="button" data-add-to-cart="lucky-clover">Thêm vào giỏ <i class="bi bi-bag-plus" aria-hidden="true"></i></button>
                     </div>
                 </article>
 
@@ -187,6 +190,7 @@
                             <p>Bạc cổ / Unisex</p>
                         </div>
                         <span class="price">1.890.000đ</span>
+                        <button class="add-to-cart" type="button" data-add-to-cart="dragon-scale">Thêm vào giỏ <i class="bi bi-bag-plus" aria-hidden="true"></i></button>
                     </div>
                 </article>
             </div>
@@ -314,6 +318,7 @@
         updateStickyHeader();
         window.addEventListener('scroll', updateStickyHeader, { passive: true });
     </script>
+    <script src="cart.js"></script>
 </body>
 
 </html>
