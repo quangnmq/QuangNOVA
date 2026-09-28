@@ -781,6 +781,83 @@ section[id] {
   color: var(--ink);
 }
 
+.footer-extra {
+  width: min(var(--max-width), 100%);
+  margin: -28px auto 52px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 50px;
+}
+
+.footer-extra .footer-column p,
+.footer-extra .footer-column span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-extra .footer-column span {
+  line-height: 1.5;
+}
+
+.social-float {
+  position: fixed;
+  z-index: 30;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-float-link {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(23, 23, 20, 0.24);
+  font-size: 25px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.social-float-link:hover,
+.social-float-link:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(23, 23, 20, 0.3);
+}
+
+.social-float-link span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.social-float-link.messenger {
+  background: #087ef5;
+}
+
+.social-float-link.zalo {
+  background: #0878e8;
+}
+
+.social-float-link.zalo strong {
+  width: 31px;
+  height: 25px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+}
+
 .footer-bottom {
   width: min(var(--max-width), 100%);
   margin: 0 auto;
@@ -866,6 +943,11 @@ section[id] {
 
   .footer-main {
     grid-template-columns: 1.5fr 1fr 1fr;
+  }
+
+  .footer-extra {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
 
   .footer-brand {
@@ -1023,6 +1105,24 @@ section[id] {
 
   .footer-bottom {
     flex-direction: column;
+  }
+
+  .footer-extra {
+    margin-top: -18px;
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .social-float {
+    right: 14px;
+    bottom: 18px;
+    gap: 9px;
+  }
+
+  .social-float-link {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
   }
 }
 
