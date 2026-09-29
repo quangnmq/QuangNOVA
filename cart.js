@@ -1,5 +1,6 @@
 (() => {
     const storageKey = 'ketAnYenCart';
+    let memoryCart = {};
     const products = {
         'moonlight': {
             name: 'Vòng tay Nguyệt Quang',
@@ -28,7 +29,7 @@
             price: 1890000,
             image: 'https://images.unsplash.com/photo-1681091639096-a7b2eb1d4990?auto=format&fit=crop&w=900&q=85',
             alt: 'Vòng tay Dragon Scale chạm khắc tinh xảo'
-        }
+        },
         'thach-anh-trang': { name: 'Vòng tay Thạch Anh Trắng', detail: 'Thạch anh trắng tự nhiên / Trong sáng', price: 1290000, image: 'https://images.pexels.com/photos/9660452/pexels-photo-9660452.jpeg?auto=compress&cs=tinysrgb&w=900', alt: 'Vòng tay đá Thạch Anh Trắng' },
         'thach-anh-hong': { name: 'Vòng tay Thạch Anh Hồng', detail: 'Thạch anh hồng / Dịu dàng', price: 1490000, image: 'https://images.pexels.com/photos/11352700/pexels-photo-11352700.jpeg?auto=compress&cs=tinysrgb&w=900', alt: 'Vòng tay đá Thạch Anh Hồng' },
         'thach-anh-tim': { name: 'Vòng tay Thạch Anh Tím', detail: 'Amethyst tự nhiên / Sắc tím sâu', price: 1690000, image: 'https://images.pexels.com/photos/11126194/pexels-photo-11126194.jpeg?auto=compress&cs=tinysrgb&w=900', alt: 'Vòng tay đá Thạch Anh Tím' },
@@ -43,22 +44,45 @@
 
     const readCart = () => {
         try {
-            const cart = JSON.parse(localStorage.getItem(storageKey) || '{}');
-            return cart && typeof cart === 'object' ? cart : {};
-        } catch {
-            return {};
-        }
+            const storedCart = localStorage.getItem(storageKey);
+            if (storedCart) return JSON.parse(storedCart);
+        } catch { /* Try session storage when local storage is unavailable. */ }
+
+        try {
+            const storedCart = sessionStorage.getItem(storageKey);
+            if (storedCart) return JSON.parse(storedCart);
+        } catch { /* Use the in-memory cart for this page session. */ }
+
+        return memoryCart;
+    };
+
+    const isCart = (cart) => {
+        return cart && typeof cart === 'object' && !Array.isArray(cart);
+    };
+
+    const readValidatedCart = () => {
+        const cart = readCart();
+        return isCart(cart) ? cart : {};
     };
 
     const writeCart = (cart) => {
-        localStorage.setItem(storageKey, JSON.stringify(cart));
+        memoryCart = cart;
+        try {
+            localStorage.setItem(storageKey, JSON.stringify(cart));
+        } catch {
+            try {
+                sessionStorage.setItem(storageKey, JSON.stringify(cart));
+            } catch {
+                // Keep the cart available for the current page session.
+            }
+        }
         render();
     };
 
     const formatPrice = (price) => `${price.toLocaleString('vi-VN')}đ`;
 
     const render = () => {
-        const cart = readCart();
+        const cart = readValidatedCart();
         const count = Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
         document.querySelectorAll('[data-cart-count]').forEach((badge) => {
             badge.textContent = count;
@@ -111,10 +135,14 @@
         const addButton = event.target.closest('[data-add-to-cart]');
         const quantityButton = event.target.closest('[data-quantity]');
         const removeButton = event.target.closest('[data-remove]');
-        const cart = readCart();
+        const cart = readValidatedCart();
 
         if (addButton) {
             const id = addButton.dataset.addToCart;
+            if (!products[id]) {
+                console.error(`Unknown product ID: ${id}`);
+                return;
+            }
             cart[id] = (cart[id] || 0) + 1;
             writeCart(cart);
             const previous = addButton.innerHTML;
