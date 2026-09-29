@@ -286,7 +286,7 @@ section[id] {
   position: absolute;
   left: clamp(22px, 7vw, 108px);
   bottom: clamp(70px, 11vh, 128px);
-  width: min(670px, calc(100% - 44px));
+  width: min(1100px, calc(100% - 44px));
 }
 
 .eyebrow {
@@ -306,9 +306,10 @@ section[id] {
 .hero h1 {
   margin-bottom: 22px;
   font-family: "Manrope", sans-serif;
-  font-size: clamp(48px, 6vw, 92px);
+  font-size: clamp(22px, 4vw, 56px);
   font-weight: 600;
   line-height: 0.98;
+  white-space: nowrap;
 }
 
 .hero-content > p:not(.eyebrow) {
@@ -1385,7 +1386,7 @@ section[id] {
   }
 
   .hero h1 {
-    font-size: 45px;
+    font-size: clamp(20px, 5.2vw, 30px);
   }
 
   .hero-content > p:not(.eyebrow) {
