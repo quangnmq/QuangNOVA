@@ -579,6 +579,22 @@ section[id] {
   gap: 16px;
 }
 
+.new-arrivals-intro {
+  max-width: 660px;
+  margin: -28px 0 36px;
+  color: var(--muted);
+}
+
+.new-arrivals-page {
+  min-height: 70vh;
+}
+
+.new-arrivals-page h1 {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.15;
+}
+
 .product-info h3 {
   margin-bottom: 4px;
   font-family: "Manrope", sans-serif;
